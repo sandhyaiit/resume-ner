@@ -1,0 +1,106 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+  <title>Resume Information</title>
+  <style>
+    table {
+      border-collapse: collapse;
+    }
+    th, td {
+      border: 1px solid black;
+      padding: 8px;
+    }
+  </style>
+</head>
+<body>
+  <table>
+    <tr>
+      <th>Field</th>
+      <th>Value</th>
+    </tr>
+    {% if resume_info['name'] %}
+    <tr>
+      <td>Name</td>
+      <td>{{ resume_info['name'] }}</td>
+    </tr>
+    {% endif %}
+    {% if resume_info['location'] %}
+    <tr>
+      <td>Location</td>
+      <td>{{ resume_info['location'] }}</td>
+    </tr>
+    {% endif %}
+    {% if resume_info['email'] %}
+    <tr>
+      <td>Email Address</td>
+      <td><a href="https://{{ resume_info['email'] }}">{{ resume_info['email'] }}</a></td>
+    </tr>
+    {% endif %}
+    {% if resume_info['designation'] %}
+    <tr>
+      <td>Designation</td>
+      <td>{{ resume_info['designation'] }}</td>
+    </tr>
+    {% endif %}
+    {% if resume_info['companies'] %}
+    <tr>
+      <td>Companies worked at</td>
+      <td>{{ resume_info['companies'] }}</td>
+    </tr>
+    {% endif %}
+    {% if resume_info['college'] %}
+    <tr>
+      <td>College Name</td>
+      <td>{{ resume_info['college'] }}</td>
+    </tr>
+    {% endif %}
+    {% if resume_info['skills'] %}
+    <tr>
+      <td>Skills</td>
+      <td>{{ resume_info['skills'] }}</td>
+    </tr>
+    {% endif %}
+  </table>
+</body>
+</html> -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Resume Information</title>
+  <style>
+    table {
+      border-collapse: collapse;
+    }
+    th, td {
+      border: 1px solid black;
+      padding: 8px;
+    }
+  </style>
+</head>
+<body>
+  <table>
+    <tr>
+      <th>Field</th>
+      <th>Value</th>
+    </tr>
+    {% for key, value in resume_info.items() %}
+    {% if value %}
+    <tr>
+      <td>{{ key }}</td>
+      <td>
+        {% if value|length > 1 %}
+        <ul>
+        {% for item in value %}
+          <li>{{ item }}</li>
+        {% endfor %}
+        </ul>
+        {% else %}
+        {{ value[0] }}
+        {% endif %}
+      </td>
+    </tr>
+    {% endif %}
+    {% endfor %}
+  </table>
+</body>
+</html>
